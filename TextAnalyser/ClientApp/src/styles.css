@@ -3,6 +3,15 @@
 @import "../node_modules/mdbootstrap/css/style.css" screen;
 
 /* Provide sufficient contrast against white background */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 4rem; /* Margin bottom by footer height */
+}
+
 body {
   background-image: url(https://i.ibb.co/F3YPNLk/fon-1.pngg);
   background-size: cover;

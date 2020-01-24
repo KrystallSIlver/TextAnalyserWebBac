@@ -16,4 +16,10 @@ header {
   .desk {
     display: none;
   }
+  .btnalg {
+    display: flex;
+    justify-content: center;
+    padding-top: 0.5rem;
+    padding-left: 0rem !important;
+  }
 }
