@@ -14,6 +14,8 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { SpeakCorrectlyComponent } from './speak-correctly/speak-correctly.component';
 import { FooterComponent } from './footer/footer.component';
 import { CardComponent } from './card/card.component';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { HelpComponent } from './help/help.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { CardComponent } from './card/card.component';
     SpeakCorrectlyComponent,
     FooterComponent,
     CardComponent,
+    SpinnerComponent,
+    HelpComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -41,6 +45,7 @@ import { CardComponent } from './card/card.component';
       { path: 'gallery', component: GalleryComponent },
       { path: 'speak-correctly', component: SpeakCorrectlyComponent },
       { path: 'card', component: CardComponent },
+      { path: 'help', component: HelpComponent },
     ])
   ],
   providers: [],

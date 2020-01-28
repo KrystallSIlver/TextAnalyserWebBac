@@ -22,8 +22,8 @@
           <li class="nav-item btnalg" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
             <button type="button" class="btn btn-outline-deep-orange" mat-raised-button [routerLink]='["/speak-correctly"]'>Говоримо правильно</button>
           </li>
-          <li class="nav-item desk">
-            <button class="btn btn-outline"><i class="fas fa-question"></i></button>
+          <li class="nav-item desk" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+            <button class="btn btn-outline-yellow" mat-raised-button [routerLink]='["/help"]'><i class="fas fa-question"></i></button>
           </li >
         </ul>
       </div>

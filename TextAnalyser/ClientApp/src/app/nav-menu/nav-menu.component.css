@@ -6,6 +6,10 @@ header {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
+i {
+  color: #b98608;
+}
+
 @media (min-width: 769px) {
   .smrt {
     display: none;
