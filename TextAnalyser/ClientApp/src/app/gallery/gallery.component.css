@@ -11,6 +11,10 @@
   .thumb{
     margin-bottom: 30px;
   }
+
+  .img-thumbnail {
+    background-color: #ffe0b6;
+  }
           
   .page-top{
      margin-top:85px;

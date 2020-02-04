@@ -19,3 +19,15 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+
+.carousel-indicators li{
+  background-color: green !important;
+}
+
+.carousel-control-next-icon {
+  background-color: green !important;
+}
+
+.carousel-control-prev-icon {
+  background-color: green !important;
+}

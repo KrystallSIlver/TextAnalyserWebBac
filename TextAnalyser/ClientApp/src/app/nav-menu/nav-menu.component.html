@@ -1,11 +1,11 @@
 <header>
   <div class='navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg border-bottom box-shadow mb-3'>
     <div class="container">
-      <a class="navbar-brand desk">
-        <img src="https://i.ibb.co/y6LYQy4/logos.png" alt="logo" height="85" [routerLink]='[""]'>
+      <a class="navbar-brand desk" [routerLink]='[""]'>
+        <img src="https://i.ibb.co/y6LYQy4/logos.png" alt="logo" height="85" tooltip="Головна сторінка" data-placement="bottom" [theme]="'light'">
       </a>
-      <a class="navbar-brand smrt">
-        <img src="https://i.ibb.co/PWsWFMx/logo-smartphone.png" alt="logo" height="85" [routerLink]='[""]'>
+      <a class="navbar-brand smrt" [routerLink]='[""]'>
+        <img src="https://i.ibb.co/PWsWFMx/logo-smartphone.png" alt="logo" height="85">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-label="Toggle navigation"
         [attr.aria-expanded]="isExpanded" (click)="toggle()">
