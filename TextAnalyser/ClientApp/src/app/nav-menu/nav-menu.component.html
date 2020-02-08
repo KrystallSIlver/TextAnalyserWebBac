@@ -11,7 +11,7 @@
         [attr.aria-expanded]="isExpanded" (click)="toggle()">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+      <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]='{"show": isExpanded}'>
         <ul class="navbar-nav d-flex justify-content-center align-items-center">
           <li class="nav-item btnalg" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
             <button type="button" class="btn btn-outline-brown" mat-raised-button [routerLink]='["/text-analyser"]'>Аналіз тексту</button>

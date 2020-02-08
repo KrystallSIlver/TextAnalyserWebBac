@@ -6,3 +6,7 @@
   .active-amber-textarea-2.md-form textarea.md-textarea:focus:not([readonly])+label {
     color: #ffa000;
   }
+
+  .nav-tabs .nav-link.active {
+    background-color: #ffe0b6;
+  }

@@ -5,16 +5,17 @@ import { CarouselModule, WavesModule, InputsModule, ButtonsModule } from 'angula
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { TooltipModule } from 'ng2-tooltip-directive';
+import { HighchartsChartModule } from 'highcharts-angular';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { CarouselComponent } from './carousel/carousel.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
 import { TextAnalyserComponent } from './text-analyser/text-analyser.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { SpeakCorrectlyComponent } from './speak-correctly/speak-correctly.component';
-import { FooterComponent } from './footer/footer.component';
-import { SpinnerComponent } from './spinner/spinner.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 import { HelpComponent } from './help/help.component';
 import { AntysurzhykComponent } from './cards/antysurzhyk/antysurzhyk.component';
 import { ForChildrenComponent } from './cards/for-children/for-children.component';
@@ -24,6 +25,11 @@ import { ParonymsComponent } from './cards/paronyms/paronyms.component';
 import { SynonymsComponent } from './cards/synonyms/synonyms.component';
 import { WordUsageComponent } from './cards/word-usage/word-usage.component';
 import { PhraseologismsComponent } from './cards/phraseologisms/phraseologisms.component';
+import { GoToTopButtonComponent } from './components/go-to-top-button/go-to-top-button.component';
+import { OrthographyTabComponent } from './tabs/orthography-tab/orthography-tab.component';
+import { SeoTabComponent } from './tabs/seo-tab/seo-tab.component';
+import { ReadTabComponent } from './tabs/read-tab/read-tab.component';
+import { MapTabComponent } from './tabs/map-tab/map-tab.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +51,11 @@ import { PhraseologismsComponent } from './cards/phraseologisms/phraseologisms.c
     SynonymsComponent,
     WordUsageComponent,
     PhraseologismsComponent,
+    GoToTopButtonComponent,
+    OrthographyTabComponent,
+    SeoTabComponent,
+    ReadTabComponent,
+    MapTabComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -52,6 +63,7 @@ import { PhraseologismsComponent } from './cards/phraseologisms/phraseologisms.c
     FormsModule,
     TooltipModule,
     ButtonsModule,
+    HighchartsChartModule,
     CarouselModule.forRoot(),
     WavesModule.forRoot(),
     InputsModule.forRoot(),
