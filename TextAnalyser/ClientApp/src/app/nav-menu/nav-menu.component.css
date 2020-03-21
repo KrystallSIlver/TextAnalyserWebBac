@@ -23,7 +23,7 @@ i {
   .btnalg {
     display: flex;
     justify-content: center;
-    padding-top: 0.5rem;
+    padding-top: 0.2rem;
     padding-left: 0rem !important;
   }
 }

@@ -1,0 +1,11 @@
+@media (min-width: 769px) {
+    .smrt {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .desk {
+      display: none;
+    }
+  }

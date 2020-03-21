@@ -15,7 +15,6 @@ import { TextAnalyserComponent } from './text-analyser/text-analyser.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { SpeakCorrectlyComponent } from './speak-correctly/speak-correctly.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { SpinnerComponent } from './components/spinner/spinner.component';
 import { HelpComponent } from './help/help.component';
 import { AntysurzhykComponent } from './cards/antysurzhyk/antysurzhyk.component';
 import { ForChildrenComponent } from './cards/for-children/for-children.component';
@@ -41,7 +40,6 @@ import { MapTabComponent } from './tabs/map-tab/map-tab.component';
     GalleryComponent,
     SpeakCorrectlyComponent,
     FooterComponent,
-    SpinnerComponent,
     HelpComponent,
     AntysurzhykComponent,
     ForChildrenComponent,
