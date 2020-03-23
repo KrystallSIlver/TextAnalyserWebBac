@@ -1,34 +1,30 @@
 <div class="md-form d-flex amber-textarea active-amber-textarea-2">
-    <textarea class="md-textarea form-control" rows="3" id="input_text" type="text" length="1200" mdbCharCounter mdbInput></textarea>
+    <textarea class="md-textarea form-control" rows="3" id="input_text" type="text" length="1200" mdbCharCounter mdbInput [(ngModel)]="text"></textarea>
     <label for="input_text">Введіть текст</label>
 </div>
 <div class="d-flex justify-content-end">
-    <button type="button" class="btn btn-yellow">Перевірити</button>
+    <button type="button" class="btn btn-yellow" (click)="check()">Перевірити</button>
 </div>
-
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item">
-      <a class="nav-link active" id="orthography-tab" data-toggle="tab" role="tab" aria-controls="orthography"
-        aria-selected="true">Орфографічні помилки</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="seo-tab" data-toggle="tab" role="tab" aria-controls="seo"
-        aria-selected="false">Семантичний аналіз</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="read-tab" data-toggle="tab" role="tab" aria-controls="read"
-        aria-selected="false">Читабельність</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" id="map-tab" data-toggle="tab" role="tab" aria-controls="map"
-          aria-selected="false">Карта тексту</a>
-    </li>
-  </ul>
-  <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="orthography" role="tabpanel" aria-labelledby="orthography-tab"><orthography-tab></orthography-tab></div>
-    <div class="tab-pane fade" id="seo" role="tabpanel" aria-labelledby="seo-tab"><seo-tab></seo-tab></div>
-    <div class="tab-pane fade" id="read" role="tabpanel" aria-labelledby="read-tab"><read-tab></read-tab></div>
-    <div class="tab-pane fade" id="map" role="tabpanel" aria-labelledby="map-tab"><map-tab></map-tab></div>
-  </div>
-
+<div *ngIf="false">  <!--Переписать после появления сервиса -->
+  <ul class="nav nav-tabs" id="myTab" role="tablist" >
+      <li class="nav-item">
+        <button class="nav-link " [ngClass]="{active:isOrthography}" (click)="makeActiveTab(1)">Орфографічні помилки</button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" [ngClass]="{active:isSeo}" (click)="makeActiveTab(2)">Семантичний аналіз</button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" [ngClass]="{active:isRead}" (click)="makeActiveTab(3)">Читабельність</button>
+      </li>
+      <li class="nav-item">
+          <button class="nav-link" [ngClass]="{active:isMap}" (click)="makeActiveTab(4)">Карта тексту</button>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade " [ngClass]="{show:isOrthography, active:isOrthography}"><orthography-tab></orthography-tab></div>
+      <div class="tab-pane fade" [ngClass]="{show:isSeo, active:isSeo}"><seo-tab></seo-tab></div>
+      <div class="tab-pane fade" [ngClass]="{show:isRead, active:isRead}"><read-tab></read-tab></div>
+      <div class="tab-pane fade" [ngClass]="{show:isMap, active:isMap}"><map-tab></map-tab></div>
+    </div>
+</div>
 <go-to-top-button></go-to-top-button>

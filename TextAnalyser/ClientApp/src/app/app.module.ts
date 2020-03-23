@@ -30,6 +30,10 @@ import { SeoTabComponent } from './tabs/seo-tab/seo-tab.component';
 import { ReadTabComponent } from './tabs/read-tab/read-tab.component';
 import { MapTabComponent } from './tabs/map-tab/map-tab.component';
 
+import 'hammerjs';
+import 'mousetrap';
+import { GalleryModule } from '@ks89/angular-modal-gallery';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,7 +83,8 @@ import { MapTabComponent } from './tabs/map-tab/map-tab.component';
       { path: 'speak-correctly/word-usage', component: WordUsageComponent },
       { path: 'speak-correctly/phraseologisms', component: PhraseologismsComponent },
       { path: 'help', component: HelpComponent },
-    ])
+    ]),
+    GalleryModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
