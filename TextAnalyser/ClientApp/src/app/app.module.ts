@@ -33,6 +33,7 @@ import { MapTabComponent } from './tabs/map-tab/map-tab.component';
 import 'hammerjs';
 import 'mousetrap';
 import { GalleryModule } from '@ks89/angular-modal-gallery';
+import { BackButtonComponent } from './components/back-button/back-button.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { GalleryModule } from '@ks89/angular-modal-gallery';
     SeoTabComponent,
     ReadTabComponent,
     MapTabComponent,
+    BackButtonComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
