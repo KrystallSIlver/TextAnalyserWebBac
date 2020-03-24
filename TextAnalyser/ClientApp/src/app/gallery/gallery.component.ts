@@ -23,7 +23,8 @@ import {
   CurrentImageConfig,
   PlainGalleryConfig,
   PlainGalleryStrategy,
-  GridLayout
+  GridLayout,
+  AdvancedLayout
 } from '@ks89/angular-modal-gallery';
 
 @Component({
@@ -38,9 +39,10 @@ export class GalleryComponent implements OnInit {
   ngOnInit() {
   }
   
-  plainGalleryGrid: PlainGalleryConfig = {
-    strategy: PlainGalleryStrategy.GRID,
-    layout: new GridLayout({ width: '30%', height: '50%' }, { length: 4, wrap: true })
+  galleryConfig: PlainGalleryConfig = {
+    strategy: PlainGalleryStrategy.CUSTOM,
+    layout: new AdvancedLayout(-1, true)
+    //layout: new GridLayout({ width: '30%', height: '50%' }, { length: 4, wrap: true })
   };
 
   images: Image[] = [
@@ -101,5 +103,14 @@ export class GalleryComponent implements OnInit {
     new Image (54, {img: 'https://i.ibb.co/SwCgBdk/quote-54.png'}),
     new Image (55, {img: 'https://i.ibb.co/Y3fkR6c/quote-55.png'})
   ]
+
+  openImageModalRowDescription(image: Image) {
+    const index: number = this.getCurrentIndexCustomLayout(image, this.images);
+    this.galleryConfig = Object.assign({}, this.galleryConfig, { layout: new AdvancedLayout(index, true) });
+  }
+
+  private getCurrentIndexCustomLayout(image: Image, images: Image[]): number {
+    return image ? images.indexOf(image) : -1;
+  }
 
 }

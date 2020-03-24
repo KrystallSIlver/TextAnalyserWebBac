@@ -18,3 +18,9 @@
 #myBtn:hover {
     background-color: #1182a7; /* Add a dark-grey background on hover */
 } 
+
+@media (max-width: 768px) {
+    .smrt {
+      display: none;
+    }
+  }
