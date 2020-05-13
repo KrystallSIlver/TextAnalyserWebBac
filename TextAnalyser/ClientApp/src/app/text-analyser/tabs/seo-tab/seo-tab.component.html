@@ -1,0 +1,141 @@
+<h4 class="d-flex pt-3 pb-2 justify-content-center">Статистика тексту</h4>
+<table class="table">
+    <thead class="lighten-2">
+      <tr>
+        <th scope="col">Показник</th>
+        <th scope="col" class="alcn">Значення</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Кількість символів</th>
+        <td>{{seo.charCount}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Кількість символів без пробілів</th>
+        <td>{{seo.charCountWithoutSpaces}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Кількість слів</th>
+        <td>{{seo.wordCount}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Кількість речень</th>
+        <td>{{seo.senctenceCount}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Кількість унікальних слів</th>
+        <td>{{seo.unicWordCount}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Кількість значимих слів</th>
+        <td>{{seo.significantWordCount}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Кількість багатоскладових слів</th>
+        <td>{{seo.polysyllables}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Кількість стоп-слів</th>
+        <td>{{seo.stopWordCount}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Вода</th>
+        <td>{{seo.waterPercentage}}%</td>
+      </tr>
+      <tr>
+        <th scope="row">Класична нудота документу</th>
+        <td>{{seo.clasicNauseaPercentage}}%</td>
+      </tr>
+      <tr>
+        <th scope="row">Академічна нудота документу</th>
+        <td>{{seo.academicalNauseaPercentage}}%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="mask mb-2">
+    <div class="colleft">
+        <div class="col1">
+	        <word-categories-chart *ngIf="seo" [seo]="seo"></word-categories-chart>
+	      </div>
+	      <div class="col2">
+          <word-chart *ngIf="seo" [series]="seo"></word-chart>
+	      </div> 
+	  </div>    
+  </div>
+  
+  <div class="mask mb-2">
+        <div class="colmid">
+            <div class="colleft1">
+                <div class="col11">
+                  <sign-word *ngIf="seo" [seo]="seo"></sign-word>
+                </div>
+                <div class="col22">
+                  <unic-word *ngIf="seo" [seo]="seo"></unic-word>
+                </div>
+                <div class="col33">
+                  <stop-word *ngIf="seo" [seo]="seo"></stop-word>
+                </div>
+            </div>
+        </div>
+  </div>
+  
+  <div class="pll mb-2">
+    <water-chart *ngIf="seo" [seo]="seo"></water-chart>
+  </div>
+  
+  
+<h4 class="d-flex pt-3 pb-2 justify-content-center">Семантичне ядро</h4>
+<table class="table">
+    <thead class="lighten-2">
+      <tr>
+        <th scope="col">Слово</th>
+        <th scope="col" class="alcn">Кількість</th>
+        <th scope="col" class="alcn">Частота</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let w of seo.semanticCore">
+        <th scope="row">{{w.phrase}}</th>
+        <td>{{w.count}}</td>
+        <td>{{w.frequency}}%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4 class="d-flex pt-3 pb-2 justify-content-center">Слова</h4>
+  <table class="table">
+      <thead class="lighten-2">
+        <tr>
+          <th scope="col">Слово</th>
+          <th scope="col" class="alcn">Кількість</th>
+          <th scope="col" class="alcn">Частота</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let w of seo.words">
+          <th scope="row">{{w.phrase}}</th>
+          <td>{{w.count}}</td>
+          <td>{{w.frequency}}%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4 class="d-flex pt-3 pb-2 justify-content-center">Стоп-слова</h4>
+    <table class="table pb-2">
+        <thead class="lighten-2">
+          <tr>
+            <th scope="col">Слово</th>
+            <th scope="col" class="alcn">Кількість</th>
+            <th scope="col" class="alcn">Частота</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let w of seo.stopWords">
+            <th scope="row">{{w.phrase}}</th>
+            <td>{{w.count}}</td>
+            <td>{{w.frequency}}%</td>
+          </tr>
+        </tbody>
+      </table>

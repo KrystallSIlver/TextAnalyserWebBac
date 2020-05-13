@@ -1,0 +1,30 @@
+<div class="pt-3">
+<table class="table">
+    <thead class="lighten-2">
+      <tr>
+        <th scope="col">Ранг</th>
+        <th scope="col">Слово</th>
+        <th scope="col" class="alcn">Кількість повторів</th>
+        <th scope="col" class="alcn">Значення за законом Ципфа</th>
+        <th scope="col" class="alcn">Відповідність</th>
+        <th scope="col" class="alcn">Рекомендація</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let w of _zipf">
+        <th scope="row" class="alcn">{{w.rank}}</th>
+        <td>{{w.phrase}}</td>
+        <td class="alcn">{{w.count}}</td>
+        <td class="alcn">{{w.idealCount}}</td>
+        <td class="alcn">{{w.frequency}}%</td>
+        <td class="alcn">{{w.recomendation}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  <div id="word" class="mb-4"
+    style = "width: 100%; height: 400px; display: block;"></div>
+
+  <div id="perc"
+    style = "width: 100%; height: 400px; display: block;"></div>

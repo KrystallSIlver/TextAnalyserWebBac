@@ -1,0 +1,77 @@
+thead {
+    background-color: #ffe0b6;
+}
+
+td {
+    width: 33%;
+    text-align: center;
+}
+
+.alcn {
+    text-align: center;
+}
+
+.mask{
+    position: relative;
+    overflow: hidden;
+    margin: 0px auto;
+    width: 100%;
+ }
+ .colleft{
+    position: relative;
+    width: 100%;
+    right: 50%;
+ }
+ .col1{
+    position: relative;
+    overflow: hidden;
+    float: left;
+    width: 48%;
+    left: 101%;
+ }
+ .col2{
+    position: relative;
+    overflow: hidden;
+    float: left;
+    width: 48%;
+    left: 3%;
+ }
+ .colmid{
+    position: relative;
+    width: 100%;
+    right: 33%;
+ }
+ .colleft1{
+    position: relative;
+    width: 100%;
+    right: 33%;
+    background-color: #b4d2f7
+ }
+ .col11{
+    position: relative;
+    overflow: hidden;
+    float: left;
+    width: 31%;
+    left: 101%;
+ }
+ .col22{
+    position: relative;
+    overflow: hidden;
+    float: left;
+    width: 32%;
+    left: 36%;
+ }
+ .col33{
+    position: relative;
+    overflow: hidden;
+    float: left;
+    width: 31%;
+    left: 71%;
+ }
+
+ .pll {
+     padding-left: 30%;
+     padding-right: 30%;
+ }
+ 
+ 
