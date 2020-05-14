@@ -5,7 +5,7 @@
     
     <div class="row align-items-center">
 
-      <div class="col-lg-6 mb-4">
+      <div class="col-lg-6 mb-5">
         <div class="pb-5">
           <div class="view z-depth-1-half rounded">
             <img class="rounded img-fluid" src="https://i.ibb.co/Qjct4dK/888.jpg" alt="Text">
@@ -58,8 +58,10 @@
               <ul class="text-muted">
                 <li>кількість символів з пробілами і без них</li>
                 <li>загальна кількість слів</li>
+                <li>загальна речень</li>
                 <li>кількість унікальних слів <i class="far fa-question-circle" tooltip="Кількість слів без повторів" data-placement="right" [theme]="'light'"></i></li>
                 <li>кількість значущих слів <i class="far fa-question-circle" tooltip="Кількість іменників" data-placement="right" [theme]="'light'"></i></li>
+                <li>кількість багатоскладових слів <i class="far fa-question-circle" tooltip="Кількість слів, у яких більше 2 складів" data-placement="right" [theme]="'light'"></i></li>
                 <li>кількість стоп-слів <i class="far fa-question-circle" tooltip="Кількість неповнозначних слів" data-placement="right" [theme]="'light'"></i></li>
                 <li>кількість води <i class="far fa-question-circle" tooltip="Кількість води не можна назвати показником якості тексту, але все ж краще, щоб цей показник не перевищував 65%" data-placement="right" [theme]="'light'"></i></li>
                 <li>процент класичної нудоти <i class="far fa-question-circle" tooltip="Кількість повторів в тексті однакових слів. Оптимальне значення - 7" data-placement="right" [theme]="'light'"></i></li>
@@ -88,6 +90,15 @@
               <span class="number">6</span>
             </div>
             <div class="step-excerpt">
+              <h6 class="font-weight-bold dark-grey-text mb-3">Закон Ципфа</h6>
+              <p class="text-muted">Цей закон можна сформулювати таким чином. Якщо для якогось досить великого тексту скласти список всіх слів, що зустрілися в ньому, а потім ранжувати ці слова у порядку убування частоти їх появи в тексті, то для будь-якого слова добуток його рангу і частоти появи буде величиною постійною.</p>
+            </div>
+          </li>
+          <li class="step-element pb-0">
+            <div class="step-number">
+              <span class="number">7</span>
+            </div>
+            <div class="step-excerpt">
               <h6 class="font-weight-bold dark-grey-text mb-3">Карта тексту</h6>
               <p class="text-muted">Карта тексту придатна для швидкого аналізу статті на предмет щільності необхідних ключових слів.</p>
             </div>
@@ -98,18 +109,30 @@
   </section>
 </div>
 
-<div class="container my-5 p-5">
-  <section class="team-section text-center dark-grey-text">
+<div class="container my-5 p-5 pb-5">
+  <section class="team-section text-center dark-grey-text pb-5">
     <h2 class="font-weight-bold text-center dark-grey-text pb-2">Наша команда</h2>
     <hr class="w-header my-4">
-    <div class="row">
-      <div class="col-md-6 mb-5">
-        <div class="w-200 mx-auto mb-4 white">
+    <div class="row pb-3">
+      <div class="col-md-4 mb-5">
+        <div class="w-200 mx-auto mb-4">
+          <img src="https://i.ibb.co/dbJjmqc/a-010101.jpg" class="z-depth-1 rounded-circle img-fluid" alt="smaple image">
+        </div>
+        <h6 class="font-weight-bold">Озеранський Володимир Сергійович</h6>
+        <small class="text-muted">кандидат технічних наук, старший викладач</small>
+        <p class="mt-3 mb-4 text-muted">Науковий керівник</p>
+        <ul class="list-unstyled d-flex justify-content-center mt-3 mb-0 orange-text">
+          <li><a target="_blank" href='http://ozeransky.vk.vntu.edu.ua/'><i class="fas fa-graduation-cap mx-2 orange-text"></i></a></li>
+          <li><a target="_blank" href='https://scholar.google.ru/citations?user=0qwWb2oAAAAJ&hl=uk'><i class="fab fa-google mx-2 orange-text"></i></a></li>
+        </ul>
+      </div>
+      <div class="col-md-4 mb-5">
+        <div class="w-200 mx-auto mb-4">
           <img src="https://i.ibb.co/vmL0mQ8/8o-WA-a-Zcj-Yc.jpg" class="z-depth-1 rounded-circle img-fluid" alt="smaple image">
         </div>
         <h6 class="font-weight-bold">Сугак Дарина</h6>
         <small class="text-muted">Front-end</small>
-        <p class="mt-3 mb-4 text-muted">Аналіз читабельності та карта тексту</p>
+        <p class="mt-3 mb-4 text-muted">Аналіз читабельності, закон Ципфа та карта тексту</p>
         <ul class="list-unstyled d-flex justify-content-center mt-3 mb-0 orange-text">
           <li><a target="_blank" href='https://www.facebook.com/dashasugak99'><i class="fab fa-facebook-f mx-2 orange-text"></i></a></li>
           <li><a target="_blank" href='https://github.com/goodflo-99'><i class="fab fa-github mx-2 orange-text"></i></a></li>
@@ -117,7 +140,7 @@
           <li><a target="_blank" href='https://conferences.vntu.edu.ua/index.php/all-fitki/all-fitki-2020/paper/view/8921'><i class="fas fa-book mx-2 orange-text"></i></a></li>
         </ul>
       </div>
-      <div class="col-md-6 mb-4">
+      <div class="col-md-4 mb-4">
         <div class="w-200 mx-auto mb-4">
           <img src="https://i.ibb.co/TB8Njdv/photo-2020-02-08-22-44-41.jpg" class="z-depth-1 rounded-circle img-fluid mx-auto" alt="smaple image">
         </div>
