@@ -10,12 +10,10 @@ export class SeoService {
   constructor(private http: HttpClient) { }
 
   Semantic(text: string) {
-    const params = new HttpParams().set('textForAnalysis', text);
-    return this.http.get(this.baseApiUrl+"Semantic", {params});    
+    return this.http.post(this.baseApiUrl+"Semantic", {textForAnalysis: text});    
   }
   
   Zipf(text: string) {
-    const params = new HttpParams().set('textForAnalysis', text);
-    return this.http.get(this.baseApiUrl+"Zipf", {params});
+    return this.http.post(this.baseApiUrl+"Zipf", {textForAnalysis: text});
   }
 }

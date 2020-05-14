@@ -84,7 +84,7 @@ namespace TextAnalyser.Logic
                 zipf[i - 1].Rank = i;
                 zipf[i - 1].IdealPerc = c / (double)zipf[i - 1].Rank;
                 zipf[i - 1].IdealCount = (int)Math.Round(zipf[i - 1].IdealPerc * words.Count) < 1 ? 1 : (int)Math.Round(zipf[i - 1].IdealPerc * words.Count);
-                zipf[i - 1].Frequency = Math.Round((double)zipf[i - 1].IdealCount / (double)zipf[i - 1].Count * 100);
+                zipf[i - 1].Frequency = Math.Round((double)zipf[i - 1].Count / (double)zipf[i - 1].IdealCount * 100);
                 zipf[i - 1].Recomendation = zipf[i - 1].IdealCount - zipf[i - 1].Count;
                 zipf[i - 1].CurrentPerc = (double)zipf[i - 1].Count / (double)words.Count;
             }
@@ -230,7 +230,7 @@ namespace TextAnalyser.Logic
         }
         private List<string> GetWordList(string text)
         {
-            return text.Split(' ', ',', '.', '?', '!', ';', ':', '"', '(', ')', '—', '-').Where(x => !string.IsNullOrEmpty(x)).ToList();
+            return text.Split(' ', ',', '.', '?', '!', ';', ':', '"', '(', ')', '—', '-', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0','[',']','#','№','$','%', '*', '@','`','\'','\\','/', '|').Where(x => !string.IsNullOrEmpty(x)).ToList();
         }
 
         private async Task<List<string>> GetListAsync(IEnumerable<string> words)

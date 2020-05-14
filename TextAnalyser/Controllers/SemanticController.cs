@@ -21,18 +21,18 @@ namespace TextAnalyser.Controllers
         }
 
         [ActionName("Semantic")]
-        [HttpGet]
-        public ActionResult SemanticAnalys(string textForAnalysis)
+        [HttpPost]
+        public async Task<IActionResult> SemanticAnalys([FromBody]RequestBody req)
         {
-            SemanticModel semantic = _logic.Semantic(textForAnalysis).Result;
+            SemanticModel semantic = await _logic.Semantic(req.TextForAnalysis);
             return Ok(semantic);
         }
 
         [ActionName("Zipf")]
-        [HttpGet]
-        public ActionResult ZipfAnalys(string textForAnalysis)
+        [HttpPost]
+        public ActionResult ZipfAnalys([FromBody]RequestBody req)
         {
-            var semantic = _logic.Zipf(textForAnalysis);
+            var semantic = _logic.Zipf(req.TextForAnalysis);
             return Ok(semantic);
         }
     }

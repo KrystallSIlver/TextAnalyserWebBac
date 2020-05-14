@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TextAnalyser.Controllers.SemanticController">
+    <Position X="4.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAIAAAAQA=</HashCode>
+      <FileName>Controllers\SemanticController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TextAnalyser.Logic.AnalysisLogic">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAIAAABAAQAAEAAkAAAEACQgAAAAAAAAAAAAI=</HashCode>
+      <FileName>Logic\Logic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TextAnalyser.Models.Readability">
+    <Position X="2.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAkAAAEAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Readability\Readability.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TextAnalyser.Models.ReadabilityBase">
+    <Position X="2.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Models\Readability\Readability.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TextAnalyser.Models.SemanticCore">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAQAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\SemanticCore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TextAnalyser.Models.SemanticModel">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAQAAAAAEAAAACAAAIABCAAABAAQARBAAAABCggAAA=</HashCode>
+      <FileName>Models\SemanticModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TextAnalyser.Models.ZipfModel">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAARAABAAAAIAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ZipfModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TextAnalyser.Constants.Constants">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="TextAnalyser.Constants.Constants.Part" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\Constants\Constants.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAABAIAAAAAAAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Constants\Constants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TextAnalyser.Models.mph_uaContext">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAARASEAAACBAAAACCGCACACAABAAAAAAAAAA=</HashCode>
+      <FileName>Models\MphUaModels\mph_uaContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
