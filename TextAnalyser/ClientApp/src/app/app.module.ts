@@ -43,6 +43,7 @@ import { WordChartComponent } from './text-analyser/charts/word-chart/word-chart
 import { UnicWordComponent } from './text-analyser/charts/unic-word/unic-word.component';
 import { SignWordComponent } from './text-analyser/charts/sign-word/sign-word.component';
 import { StopWordComponent } from './text-analyser/charts/stop-word/stop-word.component';
+import { SpellHelperService } from './helpers/SpellHelper';
 
 @NgModule({
   declarations: [
@@ -105,7 +106,7 @@ import { StopWordComponent } from './text-analyser/charts/stop-word/stop-word.co
     ]),
     GalleryModule.forRoot()
   ],
-  providers: [LanguageToolService, SeoService],
+  providers: [LanguageToolService, SeoService, SpellHelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

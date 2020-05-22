@@ -1,12 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Formatters;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using TextAnalyser.Models;
 using Constant = TextAnalyser.Constants.Constants;
@@ -34,7 +29,7 @@ namespace TextAnalyser.Logic
             var words = GetWordList(text);
             semantic.WordCount = words.Count;
 
-            var sentences = text.Split('.', '?', '!').Where(x => !string.IsNullOrEmpty(x) && !x.Equals('\n')).ToList();
+            var sentences = text.Split(Constant.sentencesSeparator).Where(x => !string.IsNullOrEmpty(x) && !x.Equals('\n')).ToList();
             semantic.SenctenceCount = sentences.Count;
 
             var unicWords = words.Distinct();
@@ -230,7 +225,7 @@ namespace TextAnalyser.Logic
         }
         private List<string> GetWordList(string text)
         {
-            return text.Split(' ', ',', '.', '?', '!', ';', ':', '"', '(', ')', '—', '-', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0','[',']','#','№','$','%', '*', '@','`','\'','\\','/', '|').Where(x => !string.IsNullOrEmpty(x)).ToList();
+            return text.Split(Constant.wordSeperators).Where(x => !string.IsNullOrEmpty(x)).ToList();
         }
 
         private async Task<List<string>> GetListAsync(IEnumerable<string> words)
@@ -242,12 +237,17 @@ namespace TextAnalyser.Logic
         {
             using (var context = new mph_uaContext())
             {
-                var list = context.WordList.Include(x=>x.Nom).Where(x => Constant.NounTypes.Contains((int)x.Nom.Part) && words.Contains(x.Word)).Select(x=>x.Nom.Reestr);
+                var list = context.WordList.Include(x=>x.Nom).Where(x => Constant.NounTypes.Contains((int)x.Nom.Part) && words.Contains(x.Word)).Select(x=> x.Nom.Reestr);
                 return list.ToList();
-
             }
-
-
+        }
+        private List<Tuple<string, string>> GetMap(IEnumerable<string> words)
+        {
+            using (var context = new mph_uaContext())
+            {
+                var list = context.WordList.Include(x => x.Nom).Where(x => Constant.NounTypes.Contains((int)x.Nom.Part) && words.Contains(x.Word)).Select(x => new Tuple<string, string>(x.Nom.Reestr, x.Word));
+                return list.ToList();
+            }
         }
     }
 }

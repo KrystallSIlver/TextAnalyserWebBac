@@ -3,16 +3,19 @@ import { LanguageToolService } from '../Services/language-tool.service';
 import { SeoService } from '../Services/seo.service';
 import { SemanticModel } from '../Models/SemanticModel';
 import { Zipf } from '../Models/ZipfModel';
+import { LanguageToolResponseModel } from '../Models/LanguageToolResponseModel';
+import { SpellHelperService } from '../helpers/SpellHelper';
+import { Error } from '../Models/Error';
 
 @Component({
   selector: 'text-analyser',
   templateUrl: './text-analyser.component.html',
   styleUrls: ['./text-analyser.component.css'],
-  providers: [LanguageToolService]
+  providers: [LanguageToolService, SpellHelperService]
 })
 export class TextAnalyserComponent implements OnInit {
 
-  constructor(private langToolSvc:LanguageToolService, private seoSvc:SeoService) { }
+  constructor(private spell:SpellHelperService, private seoSvc:SeoService) { }
   
   text: string = '';
   isOrthography: boolean = true;
@@ -22,6 +25,7 @@ export class TextAnalyserComponent implements OnInit {
   isMap: boolean = false;
   seoModel: SemanticModel;
   zipf: Zipf;
+  errors: Error[]
 
   ngOnInit() {
   }
@@ -58,7 +62,8 @@ export class TextAnalyserComponent implements OnInit {
   }
 
   check() {
-    //this.langToolSvc.Check(this.text);
+    console.log("check")
+    this.seoSvc.Check(this.text).subscribe((res:LanguageToolResponseModel) => this.errors = this.spell.getErrors(res));
     this.seoSvc.Semantic(this.text).subscribe((res:SemanticModel) => {
       this.seoModel = res
     });;

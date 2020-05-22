@@ -5,7 +5,7 @@
 <div class="d-flex justify-content-end">
     <button type="button" class="btn btn-yellow" (click)="check()">Перевірити</button>
 </div>
-<div *ngIf="seoModel && zipf"> 
+<div *ngIf="seoModel && zipf && errors"> 
   <ul class="nav nav-tabs" id="myTab" role="tablist" >
       <li class="nav-item">
         <button class="nav-link " [ngClass]="{active:isOrthography}" (click)="makeActiveTab(1)">Орфографічні помилки</button>
@@ -24,7 +24,7 @@
       </li>
     </ul>
     <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade" [ngClass]="{show:isOrthography, active:isOrthography}"><orthography-tab></orthography-tab></div>
+      <div class="tab-pane fade" [ngClass]="{show:isOrthography, active:isOrthography}"><orthography-tab [errors]="errors"></orthography-tab></div>
       <div class="tab-pane fade" [ngClass]="{show:isSeo, active:isSeo}"><seo-tab [seo]="seoModel"></seo-tab></div>
       <div class="tab-pane fade" [ngClass]="{show:isRead, active:isRead}"><read-tab [readability]="seoModel.readability"></read-tab></div>
       <div class="tab-pane fade" [ngClass]="{show:isZipf, active:isZipf}"><zipf-law-tab [zipf]="zipf"></zipf-law-tab></div>

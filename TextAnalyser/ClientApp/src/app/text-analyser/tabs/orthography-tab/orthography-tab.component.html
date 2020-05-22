@@ -7,9 +7,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">***</th>
-        <td>Mark</td>
+      <tr *ngFor="let e of errors">
+        <th scope="row">{{e.word}}</th>
+        <td>{{e.replacements}}</td>
       </tr>
     </tbody>
   </table>

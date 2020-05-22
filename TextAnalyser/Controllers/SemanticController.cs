@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -34,6 +36,34 @@ namespace TextAnalyser.Controllers
         {
             var semantic = _logic.Zipf(req.TextForAnalysis);
             return Ok(semantic);
+        }
+
+        [ActionName("Orthography")]
+        [HttpPost]
+        public IActionResult OrthographyAnalysis([FromBody]LanguageToolRequestBody reqData)
+        {
+            var request = WebRequest.Create("https://languagetool.org/api/v2/check");
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            string data = $"text={reqData.Text}&language={reqData.Language}&enabledRules=MORFOLOGIK_RULE_UK_UA&enabledCategories=TYPOS&enabledOnly=true";
+            byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(data);
+            request.ContentLength = byteArray.Length;
+            using (Stream dataStream = request.GetRequestStream())
+            {
+                dataStream.Write(byteArray, 0, byteArray.Length);
+            }
+
+            string res = string.Empty;
+            WebResponse response = request.GetResponse();
+            using (Stream stream = response.GetResponseStream())
+            {
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    res = reader.ReadToEnd();
+                }
+            }
+
+            return Ok(res);
         }
     }
 }

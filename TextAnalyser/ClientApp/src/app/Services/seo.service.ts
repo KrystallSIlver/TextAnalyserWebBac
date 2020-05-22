@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { SemanticModel } from '../Models/SemanticModel';
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +14,10 @@ export class SeoService {
   
   Zipf(text: string) {
     return this.http.post(this.baseApiUrl+"Zipf", {textForAnalysis: text});
+  }
+
+  Check(text: string) {
+    var languageCode = 'uk';
+    return this.http.post(this.baseApiUrl+'Orthography',{ text: text, language: languageCode })
   }
 }
