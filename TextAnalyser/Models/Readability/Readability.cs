@@ -14,10 +14,4 @@ namespace TextAnalyser.Models
         public ReadabilityBase ARI { get; set; }
 
     }
-
-    public class ReadabilityBase
-    {
-        public double Index { get; set; }
-        public string Auditory { get; set; }
-    }
 }
