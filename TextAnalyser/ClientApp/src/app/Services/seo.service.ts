@@ -20,4 +20,8 @@ export class SeoService {
     var languageCode = 'uk';
     return this.http.post(this.baseApiUrl+'Orthography',{ text: text, language: languageCode })
   }
+
+  Map(text: string) {
+    return this.http.post(this.baseApiUrl+'Map',{ textForAnalysis: text})
+  }
 }

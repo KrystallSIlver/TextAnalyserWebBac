@@ -84,10 +84,10 @@
   <div class="pll mb-2">
     <water-chart *ngIf="seo" [seo]="seo"></water-chart>
   </div>
-  
-  
+
+<div *ngIf="seo.semanticCore.length > 0">
 <h4 class="d-flex pt-3 pb-2 justify-content-center">Семантичне ядро</h4>
-<table class="table">
+  <table class="table">
     <thead class="lighten-2">
       <tr>
         <th scope="col">Слово</th>
@@ -96,14 +96,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let w of seo.semanticCore">
+      <tr *ngFor="let w of seo.semanticCore | slice:0:15">
         <th scope="row">{{w.phrase}}</th>
         <td>{{w.count}}</td>
         <td>{{w.frequency}}%</td>
       </tr>
     </tbody>
   </table>
-
+</div>
   <h4 class="d-flex pt-3 pb-2 justify-content-center">Слова</h4>
   <table class="table">
       <thead class="lighten-2">
@@ -114,14 +114,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let w of seo.words">
+        <tr *ngFor="let w of seo.words | slice:0:15">
           <th scope="row">{{w.phrase}}</th>
           <td>{{w.count}}</td>
           <td>{{w.frequency}}%</td>
         </tr>
       </tbody>
     </table>
-
+<div *ngIf="seo.stopWords.length > 0">
     <h4 class="d-flex pt-3 pb-2 justify-content-center">Стоп-слова</h4>
     <table class="table pb-2">
         <thead class="lighten-2">
@@ -132,10 +132,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let w of seo.stopWords">
+          <tr *ngFor="let w of seo.stopWords | slice:0:15">
             <th scope="row">{{w.phrase}}</th>
             <td>{{w.count}}</td>
             <td>{{w.frequency}}%</td>
           </tr>
         </tbody>
       </table>
+</div>

@@ -15,17 +15,17 @@ export class WordCategoriesChartComponent {
       {
          name: "Кількість унікальних слів",
          y: seo.unicWordCount,
-         color: "green"
+         color: "#009900"
       },
       {
          name: "Кількість значимих слів",
          y: seo.significantWordCount,
-         color: "yellow"
+         color: "#ffd633"
       },
       {
          name: "Кількість стоп-слів",
          y: seo.stopWordCount,
-         color: "red"
+         color: "#ff3333"
       }
     ]
     this.draw();

@@ -42,7 +42,7 @@ export class ZipfLawTabComponent implements OnInit {
         startOnTick: false,
         title:{
             text:"Кількість повторів"
-        } 
+        },
       },
       tooltip: {
         formatter: function () {
@@ -55,11 +55,11 @@ export class ZipfLawTabComponent implements OnInit {
       },
       series: [{
          name: 'Повторів у тексті',
-         data: this._zipf.map(x=>x.count),
+         data: this._zipf.slice(0,50).map(x=>x.count),
          color: "#e6b82e"
       },{
         name: 'Рекомендоване за Ципфом',
-        data: this._zipf.map(x=>x.idealCount),
+        data: this._zipf.slice(0,50).map(x=>x.idealCount),
         color: "#27b91d"
       }]
    };
@@ -91,11 +91,11 @@ export class ZipfLawTabComponent implements OnInit {
     },
     series: [{
        name: 'Повторів у тексті',
-       data: this._zipf.map(x=>x.currentPerc),
+       data: this._zipf.slice(0,50).map(x=>x.currentPerc),
        color: "#e6b82e"
     },{
       name: 'Рекомендоване за Ципфом',
-      data: this._zipf.map(x=>x.idealPerc),
+      data: this._zipf.slice(0,50).map(x=>x.idealPerc),
       color: "#27b91d"
       }]
     };

@@ -14,10 +14,11 @@ export class StopWordComponent {
       {
          name: "Кількість стоп-слів",
          y: seo.stopWordCount,
-         color: "red"
+         color: "#ff3333"
       },{
          name: "Кількість слів",
          y: seo.wordCount,
+         color: "#909090"
       }]
     this.draw();
   }

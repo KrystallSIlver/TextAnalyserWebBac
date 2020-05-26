@@ -8,7 +8,9 @@ import { Error } from 'src/app/Models/Error';
 })
 export class OrthographyTabComponent {
   @Input() errors: Error[];
+  @Input() errorPercentage: number;
 
-  constructor() { }
+  constructor() {
+  }
   
 }

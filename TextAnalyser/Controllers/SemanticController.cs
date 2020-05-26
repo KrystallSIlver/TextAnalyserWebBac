@@ -34,8 +34,8 @@ namespace TextAnalyser.Controllers
         [HttpPost]
         public ActionResult ZipfAnalys([FromBody]RequestBody req)
         {
-            var semantic = _logic.Zipf(req.TextForAnalysis);
-            return Ok(semantic);
+            var zipf = _logic.Zipf(req.TextForAnalysis);
+            return Ok(zipf);
         }
 
         [ActionName("Orthography")]
@@ -64,6 +64,14 @@ namespace TextAnalyser.Controllers
             }
 
             return Ok(res);
+        }
+
+        [ActionName("Map")]
+        [HttpPost]
+        public ActionResult TextMap([FromBody]RequestBody req)
+        {
+            var map = _logic.Map(req.TextForAnalysis);
+            return Ok(map);
         }
     }
 }

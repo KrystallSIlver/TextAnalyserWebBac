@@ -11,13 +11,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let w of _zipf">
+      <tr *ngFor="let w of _zipf | slice:0:15">
         <th scope="row" class="alcn">{{w.rank}}</th>
         <td>{{w.phrase}}</td>
         <td class="alcn">{{w.count}}</td>
         <td class="alcn">{{w.idealCount}}</td>
         <td class="alcn">{{w.frequency}}%</td>
-        <td class="alcn">{{w.recomendation}}</td>
+        <td class="alcn"><span *ngIf="w.recomendation > 0">+</span>{{w.recomendation}}</td>
       </tr>
     </tbody>
   </table>

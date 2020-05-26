@@ -14,11 +14,11 @@ export class WaterChartComponent {
       {
          name: "Кількість води у тексті",
          y: seo.waterPercentage,
-         color: "blue"
+         color: "#1a75ff"
       },{
          name: "Інший текст",
          y: 100-seo.waterPercentage,
-         color: "gray"
+         color: "#909090"
       }]
     this.draw();
   }

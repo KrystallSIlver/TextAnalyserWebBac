@@ -14,10 +14,11 @@ export class UnicWordComponent {
       {
          name: "Кількість унікальних слів",
          y: seo.unicWordCount,
-         color: "green"
+         color: "#009900"
       },{
          name: "Кількість слів",
          y: seo.wordCount,
+         color: "#909090"
       }]
     this.draw();
   }

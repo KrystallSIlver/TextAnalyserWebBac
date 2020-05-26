@@ -14,10 +14,11 @@ export class SignWordComponent {
       {
          name: "Кількість значимих слів",
          y: seo.significantWordCount,
-         color: "yellow"
+         color: "#ffd633"
       },{
          name: "Кількість слів",
          y: seo.wordCount,
+         color: "#909090"
       }]
     this.draw();
   }

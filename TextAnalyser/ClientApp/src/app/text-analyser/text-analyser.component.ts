@@ -6,6 +6,9 @@ import { Zipf } from '../Models/ZipfModel';
 import { LanguageToolResponseModel } from '../Models/LanguageToolResponseModel';
 import { SpellHelperService } from '../helpers/SpellHelper';
 import { Error } from '../Models/Error';
+import { ExtendedSemanticCore } from '../Models/ExtendedSemanticCore';
+import { NgxSpinnerService } from 'ngx-spinner';
+
 
 @Component({
   selector: 'text-analyser',
@@ -15,17 +18,20 @@ import { Error } from '../Models/Error';
 })
 export class TextAnalyserComponent implements OnInit {
 
-  constructor(private spell:SpellHelperService, private seoSvc:SeoService) { }
+  constructor(private spell:SpellHelperService, private seoSvc:SeoService, private spinner: NgxSpinnerService) { }
   
   text: string = '';
+  errorPercentage: number;
   isOrthography: boolean = true;
   isSeo: boolean = false;
   isRead: boolean = false;
   isZipf: boolean = false;
   isMap: boolean = false;
+  showLangError: boolean = false;
   seoModel: SemanticModel;
   zipf: Zipf;
-  errors: Error[]
+  errors: Error[];
+  map: ExtendedSemanticCore[]
 
   ngOnInit() {
   }
@@ -58,18 +64,43 @@ export class TextAnalyserComponent implements OnInit {
     this.isRead = false
     this.isZipf = false
     this.isMap = false
+    this.showLangError = false;
+  }
 
+  showLanguageError() {
+    this.disableAllTabs();
+    this.showLangError = true;
+    this.isOrthography = true;
+  }
+
+  restoreTabs() {
+    this.seoModel = null;
+    this.zipf = null;
+    this.errors = null;
+    this.map = null;
   }
 
   check() {
-    console.log("check")
-    this.seoSvc.Check(this.text).subscribe((res:LanguageToolResponseModel) => this.errors = this.spell.getErrors(res));
-    this.seoSvc.Semantic(this.text).subscribe((res:SemanticModel) => {
-      this.seoModel = res
-    });;
-    this.seoSvc.Zipf(this.text).subscribe((res: Zipf) => {
-      this.zipf = res;
-    })
+    this.restoreTabs();
+    this.spinner.show();
+    this.seoSvc.Check(this.text).subscribe((res:LanguageToolResponseModel) => {
+      if(res.language.detectedLanguage.name != 'Ukrainian')
+      {
+        this.showLanguageError();
+        return;
+      }
+      this.errors = this.spell.getErrors(res)
+      this.seoSvc.Semantic(this.text).subscribe((res:SemanticModel) => {
+        this.seoModel = res
+        this.errorPercentage = (this.errors.length / res.words.length) * 100
+        this.spinner.hide();
+      });;
+      this.seoSvc.Zipf(this.text).subscribe((res: Zipf) => {
+        this.zipf = res;
+      });
+      this.seoSvc.Map(this.text).subscribe((res: ExtendedSemanticCore[]) => this.map = res);  
+      this.showLangError = false;
+    });
   }
 
 }

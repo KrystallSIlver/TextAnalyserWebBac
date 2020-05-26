@@ -47,7 +47,8 @@ export class WordChartComponent {
     series: [
        {
           name: "Слова",
-          data: this._series
+          data: this._series,
+          color: "#ffad33"
        }
     ]
    };

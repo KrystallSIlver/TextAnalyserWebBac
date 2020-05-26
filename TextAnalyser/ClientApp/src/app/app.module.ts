@@ -6,6 +6,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { TooltipModule } from 'ng2-tooltip-directive';
 import { HighchartsChartModule, HighchartsChartComponent } from 'highcharts-angular';
+import { NgxSpinnerModule } from "ngx-spinner"; 
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -44,6 +45,7 @@ import { UnicWordComponent } from './text-analyser/charts/unic-word/unic-word.co
 import { SignWordComponent } from './text-analyser/charts/sign-word/sign-word.component';
 import { StopWordComponent } from './text-analyser/charts/stop-word/stop-word.component';
 import { SpellHelperService } from './helpers/SpellHelper';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -104,7 +106,9 @@ import { SpellHelperService } from './helpers/SpellHelper';
       { path: 'speak-correctly/phraseologisms', component: PhraseologismsComponent },
       { path: 'help', component: HelpComponent },
     ]),
-    GalleryModule.forRoot()
+    GalleryModule.forRoot(),
+    NgxSpinnerModule,
+    BrowserAnimationsModule
   ],
   providers: [LanguageToolService, SeoService, SpellHelperService],
   bootstrap: [AppComponent]

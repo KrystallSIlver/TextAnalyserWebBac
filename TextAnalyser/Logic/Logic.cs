@@ -16,7 +16,7 @@ namespace TextAnalyser.Logic
             _context = context;
         }
 
-        public async Task<SemanticModel> Semantic(string text)        
+        public async Task<SemanticModel> Semantic(string text)
         {
             var semantic = new SemanticModel();
 
@@ -41,6 +41,7 @@ namespace TextAnalyser.Logic
             var wordsExceptStopWords = words.Where(x=> !unicStopWords.Contains(x));
 
             var znWords = await GetListAsync(wordsExceptStopWords);
+            //var znWords = await GetExtendedListAsync(wordsExceptStopWords);
 
             //var znWords = wordsExceptStopWords.SelectMany(x => _context.WordList.Include(w => w.Nom)
             //        .Where(y => y.Word.Equals(x) && Constant.NounTypes.Contains((int)y.Nom.Part))
@@ -79,20 +80,28 @@ namespace TextAnalyser.Logic
                 zipf[i - 1].Rank = i;
                 zipf[i - 1].IdealPerc = c / (double)zipf[i - 1].Rank;
                 zipf[i - 1].IdealCount = (int)Math.Round(zipf[i - 1].IdealPerc * words.Count) < 1 ? 1 : (int)Math.Round(zipf[i - 1].IdealPerc * words.Count);
-                zipf[i - 1].Frequency = Math.Round((double)zipf[i - 1].Count / (double)zipf[i - 1].IdealCount * 100);
+                zipf[i - 1].Frequency = zipf[i - 1].Count < zipf[i - 1].IdealCount 
+                    ? Math.Round((double)zipf[i - 1].Count / (double)zipf[i - 1].IdealCount * 100) 
+                    : Math.Round((double)zipf[i - 1].IdealCount / (double)zipf[i - 1].Count * 100);
+
                 zipf[i - 1].Recomendation = zipf[i - 1].IdealCount - zipf[i - 1].Count;
                 zipf[i - 1].CurrentPerc = (double)zipf[i - 1].Count / (double)words.Count;
             }
 
             return zipf.ToList();
         }
-
+        public List<WordForms> Map(string text)
+        {
+            var words = GetWordList(text).Except(Constant.StopWordsList);
+            
+            return Task.Run(() => GetMapInfo(words)).Result;
+        }
         private List<SemanticCore> GetSemanticCore(IEnumerable<string> words, int totalWordCount) 
         {
             var grouped = words.GroupBy(x => x);
             return grouped.Select(x => new SemanticCore() { Phrase = x.Key, Count = x.Count(), Frequency = Math.Round((double)x.Count() / (double)totalWordCount * 100, 2) }).OrderByDescending(x=>x.Count).ToList();
         }
-
+        #region Readability
         private void Readability(ref SemanticModel semantic, string text)
         {
             semantic.Readability = new Readability();
@@ -184,15 +193,20 @@ namespace TextAnalyser.Logic
 
             string GetAuditory()
             {
-                if (Index <= 6) return "5 клас";
-                else if (Index <= 7) return "6 клас";
-                else if (Index <= 8) return "7 клас";
-                else if (Index <= 9) return "8 клас";
-                else if (Index <= 10) return "9 клас";
-                else if (Index <= 11) return "10 клас";
-                else if (Index <= 12) return "11 клас";
-                else if (Index <= 13) return "Студенти";
-                else return "Випускники ВНЗ";
+                if (np <= 6) return "5 клас";
+                else if (np <= 12) return "6 клас";
+                else if (np <= 20) return "7 клас";
+                else if (np <= 30) return "8 клас";
+                else if (np <= 42) return "9 клас";
+                else if (np <= 56) return "10 клас";
+                else if (np <= 72) return "11 клас";
+                else if (np <= 90) return "1 курс";
+                else if (np <= 110) return "2 курс";
+                else if (np <= 132) return "3 курс";
+                else if (np <= 156) return "4 курс";
+                else if (np <= 182) return "Mагістр";
+                else if (np <= 210) return "Aспірант";
+                else return "Професор";
             }
             return new ReadabilityBase() { Auditory = Auditory, Index = Index };
         }
@@ -223,6 +237,8 @@ namespace TextAnalyser.Logic
             }
             return new ReadabilityBase() { Auditory = Auditory, Index = Index };
         }
+        #endregion
+
         private List<string> GetWordList(string text)
         {
             return text.Split(Constant.wordSeperators).Where(x => !string.IsNullOrEmpty(x)).ToList();
@@ -241,13 +257,34 @@ namespace TextAnalyser.Logic
                 return list.ToList();
             }
         }
-        private List<Tuple<string, string>> GetMap(IEnumerable<string> words)
+        private List<WordForms> GetMapInfo(IEnumerable<string> words)
         {
             using (var context = new mph_uaContext())
             {
-                var list = context.WordList.Include(x => x.Nom).Where(x => Constant.NounTypes.Contains((int)x.Nom.Part) && words.Contains(x.Word)).Select(x => new Tuple<string, string>(x.Nom.Reestr, x.Word));
-                return list.ToList();
+                var list = context.WordList.Include(x => x.Nom)
+                                                  .Where(x => Constant.NounTypes.Contains((int)x.Nom.Part) && words.Contains(x.Word))
+                                                  .Select(x => new ReestrWord() { Reestr = x.Nom.Reestr, Word = x.Word })
+                                                  .ToList();
+
+                var listCopy = new List<ReestrWord>(list);
+                listCopy.ForEach(x => {
+                    var wordCount = words.Where(y => x.Word.Equals(y)).Count();
+                    while (list.Where(y => y.Reestr.Equals(x.Reestr)).Count() < wordCount)
+                        if (wordCount > 1)
+                            list.Add(x);
+                        else
+                            break;
+                });
+
+                var groupedList = list.GroupBy(x => x.Reestr);
+
+                return groupedList.Select(x => new WordForms(x)).OrderByDescending(x=>x.Words.Count).Take(5).ToList();
             }
+        }
+
+        private List<ExtendedSemanticCore> GetExtendedSemanticCore(IEnumerable<WordForms> words, int totalWordCount)
+        {
+            return words.Select(x => new ExtendedSemanticCore(x) { Frequency = Math.Round((double)x.Words.Count() / (double)totalWordCount * 100, 2) }).OrderByDescending(x => x.Count).ToList();
         }
     }
 }
