@@ -38,13 +38,12 @@ export class GalleryComponent implements OnInit {
 
   ngOnInit() {
   }
-  
+  //Налаштування способу відображення галереї
   galleryConfig: PlainGalleryConfig = {
     strategy: PlainGalleryStrategy.CUSTOM,
     layout: new AdvancedLayout(-1, true)
-    //layout: new GridLayout({ width: '30%', height: '50%' }, { length: 4, wrap: true })
   };
-
+  //Массив зображень
   images: Image[] = [
     new Image (0,{ img: 'https://i.ibb.co/p1jBYd6/quote.png'}),
     new Image (1,{ img: 'https://i.ibb.co/0fY4Tqh/quote-1.png'}),
@@ -103,12 +102,12 @@ export class GalleryComponent implements OnInit {
     new Image (54, {img: 'https://i.ibb.co/SwCgBdk/quote-54.png'}),
     new Image (55, {img: 'https://i.ibb.co/Y3fkR6c/quote-55.png'})
   ]
-
+  //Метод для відкриття зображення в модальному відтінку
   openImageModalRowDescription(image: Image) {
     const index: number = this.getCurrentIndexCustomLayout(image, this.images);
     this.galleryConfig = Object.assign({}, this.galleryConfig, { layout: new AdvancedLayout(index, true) });
   }
-
+  //Метод для отримання індексу обраного зображення з масива зображень
   private getCurrentIndexCustomLayout(image: Image, images: Image[]): number {
     return image ? images.indexOf(image) : -1;
   }

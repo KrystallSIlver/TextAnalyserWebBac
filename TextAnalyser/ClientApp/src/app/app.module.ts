@@ -48,6 +48,7 @@ import { SpellHelperService } from './helpers/SpellHelper';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
+  //Компоненти що експортує головний модуль
   declarations: [
     AppComponent,
     NavMenuComponent,
@@ -81,6 +82,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SignWordComponent,
     StopWordComponent
   ],
+  //Модулі що імпортуються в головний модуль
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
@@ -110,6 +112,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NgxSpinnerModule,
     BrowserAnimationsModule
   ],
+  //Список сервісів що використовуються
   providers: [LanguageToolService, SeoService, SpellHelperService],
   bootstrap: [AppComponent]
 })

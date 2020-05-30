@@ -10,7 +10,7 @@ import { WordForms } from 'src/app/Models/WordForms';
 export class MapTabComponent  {
   @Input() map: WordForms[];
   @Input() text: string;
-
+  //Метод для нанесення та відображення карти тексту
   getMapTemplate() {
     var text = this.text
     this.map.forEach(e => {
@@ -20,7 +20,7 @@ export class MapTabComponent  {
     });
     return text
   }
-
+  //Повертає CSS клас для певного індексу слова в карті тексту
   getCSSClass(index: number) {
     switch(index) {
       case 0:

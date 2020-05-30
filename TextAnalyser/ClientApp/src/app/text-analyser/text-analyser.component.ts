@@ -35,7 +35,7 @@ export class TextAnalyserComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  //Метод для переключання вкладок
   makeActiveTab(id: number) {
     this.disableAllTabs();
     switch(id)
@@ -57,7 +57,7 @@ export class TextAnalyserComponent implements OnInit {
         break;
     }
   }
-
+  //Відключення усіх вкладок
   disableAllTabs() {
     this.isOrthography = false
     this.isSeo = false
@@ -66,39 +66,49 @@ export class TextAnalyserComponent implements OnInit {
     this.isMap = false
     this.showLangError = false;
   }
-
+  //Метод для відображення помилки пов'язаної з мовою введеного тексту
   showLanguageError() {
     this.disableAllTabs();
     this.showLangError = true;
     this.isOrthography = true;
     this.spinner.hide();
   }
-
+  //Очищення об'єктів при повторному аналізі
   restoreTabs() {
     this.seoModel = null;
     this.zipf = null;
     this.errors = null;
     this.map = null;
   }
-
+  //Виконується при натисканні на кнопку перевірити. Слугує для відправки запитів на сервер за допомогою SeoService
   check() {
     this.restoreTabs();
+    //Відображення анімації загрузки
     this.spinner.show();
+    //Відправка запиту на орфографічний аналіз
     this.seoSvc.Check(this.text).subscribe((res:LanguageToolResponseModel) => {
+      //Перевірка на введену мову
       if(res && res.language.detectedLanguage.name && res.language.detectedLanguage.name != 'Ukrainian')
       {
+        //Відображення помилки
         this.showLanguageError();
         return;
       }
+      //Отримання списку помилок для відображення на вкладці результатів орфографічного аналізу
       this.errors = this.spell.getErrors(res)
+      //Відправка запиту на семантичний аналіз
       this.seoSvc.Semantic(this.text).subscribe((res:SemanticModel) => {
         this.seoModel = res
+        //Визначення відсотку офографічних помилок
         this.errorPercentage = (this.errors.length / res.words.length) * 100
+        //Приховати анімацію загрузки
         this.spinner.hide();
       });;
+      //Відправка запиту на аналіз методом Ципфа
       this.seoSvc.Zipf(this.text).subscribe((res: Zipf) => {
         this.zipf = res;
       });
+      //Відправка запиту на отримання даних для побудови карти тексту
       this.seoSvc.Map(this.text).subscribe((res: ExtendedSemanticCore[]) => this.map = res);  
       this.showLangError = false;
     });

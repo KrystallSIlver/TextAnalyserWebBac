@@ -23,27 +23,35 @@ export class ZipfLawTabComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  //Медод що відповідає за відображення графіків
   drawCharts() {
+    //Налаштування для графіку цифрового відношення
     this.wordChartOptions = {   
       chart: {
+        //Тип та фон графіку
          type: "spline",
          backgroundColor: 'rgba(1,0,0,0)'
       },
       title: {
+        //Назва графіку
          text: "Кількісне відношення за законом Ципфа"
       },
       xAxis:{
+        //Підписи по вісі Х
          categories: this._zipf.map(x=>x.phrase)
       },
-      yAxis: {   
+      yAxis: {
+        //Мінімальне значення по вісі У   
         min: 0,
+        //Максимальне значення по вісі У
         max: Math.max(...this._zipf.map(x=>x.count)),   
         startOnTick: false,
+        //Підпис для вісі У 
         title:{
             text:"Кількість повторів"
         },
       },
+      //Налаштування відображення підказки
       tooltip: {
         formatter: function () {
           return "Слово " + this.points.reduce(function (s, point) {
@@ -53,6 +61,7 @@ export class ZipfLawTabComponent implements OnInit {
         },
         shared: true
       },
+      //Дані для відображення
       series: [{
          name: 'Повторів у тексті',
          data: this._zipf.slice(0,50).map(x=>x.count),
@@ -64,6 +73,7 @@ export class ZipfLawTabComponent implements OnInit {
       }]
    };
 
+   //Налаштування для графіку процентного відношення
    this.percChartOptions = {   
     chart: {
        type: "spline",
