@@ -7,6 +7,7 @@ import { LanguageToolResponseModel } from "../Models/LanguageToolResponseModel";
   })
   export class SpellHelperService {
      getErrors(data: LanguageToolResponseModel):Error[] {
+        if(!data) return [];
         var result = data.matches.map(x=> {
             var e:Error = new Error();            
             e.word = x.context.text.substr(x.context.offset, x.context.length);

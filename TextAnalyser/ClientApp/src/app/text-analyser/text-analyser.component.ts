@@ -85,7 +85,7 @@ export class TextAnalyserComponent implements OnInit {
     this.restoreTabs();
     this.spinner.show();
     this.seoSvc.Check(this.text).subscribe((res:LanguageToolResponseModel) => {
-      if(res.language.detectedLanguage.name != 'Ukrainian')
+      if(res && res.language.detectedLanguage.name && res.language.detectedLanguage.name != 'Ukrainian')
       {
         this.showLanguageError();
         return;

@@ -104,12 +104,12 @@ namespace TextAnalyser.Logic
         /// Карта тексту
         /// </summary>
         /// <param name="text">Текст українською мовою</param>
-        public List<WordForms> Map(string text)
+        public async Task<List<WordForms>> Map(string text)
         {
             //Список слів без стоп слів
             var words = GetWordList(text).Except(Constant.StopWordsList);
             
-            return Task.Run(() => GetMapInfo(words)).Result;
+            return await Task.Run(() => GetMapInfo(words));
         }
         private List<SemanticCore> GetSemanticCore(IEnumerable<string> words, int totalWordCount) 
         {

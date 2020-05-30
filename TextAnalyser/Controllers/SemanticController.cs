@@ -42,35 +42,49 @@ namespace TextAnalyser.Controllers
         [HttpPost]
         public IActionResult OrthographyAnalysis([FromBody]LanguageToolRequestBody reqData)
         {
+            //Створення об'єкту запиту
             var request = WebRequest.Create("https://languagetool.org/api/v2/check");
+            //Налаштування запиту
             request.Method = "POST";
             request.ContentType = "application/x-www-form-urlencoded";
             string data = $"text={reqData.Text}&language={reqData.Language}&enabledRules=MORFOLOGIK_RULE_UK_UA&enabledCategories=TYPOS&enabledOnly=true";
+            //Перетворення текстових данних в масив байтів
             byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(data);
             request.ContentLength = byteArray.Length;
+            //Передача даних в запит
             using (Stream dataStream = request.GetRequestStream())
             {
                 dataStream.Write(byteArray, 0, byteArray.Length);
             }
 
             string res = string.Empty;
-            WebResponse response = request.GetResponse();
-            using (Stream stream = response.GetResponseStream())
+            try
             {
-                using (StreamReader reader = new StreamReader(stream))
+                //Отримання відповіді на запит
+                WebResponse response = request.GetResponse();
+                using (Stream stream = response.GetResponseStream())
                 {
-                    res = reader.ReadToEnd();
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        res = reader.ReadToEnd();
+                    }
                 }
+                return Ok(res);
+
+            }
+            catch
+            {
+                return Ok(res);
             }
 
-            return Ok(res);
+
         }
 
         [ActionName("Map")]
         [HttpPost]
-        public ActionResult TextMap([FromBody]RequestBody req)
+        public async Task<ActionResult> TextMap([FromBody]RequestBody req)
         {
-            var map = _logic.Map(req.TextForAnalysis);
+            var map = await _logic.Map(req.TextForAnalysis);
             return Ok(map);
         }
     }
