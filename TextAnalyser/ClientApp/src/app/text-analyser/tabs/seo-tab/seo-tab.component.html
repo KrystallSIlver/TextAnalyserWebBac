@@ -54,36 +54,38 @@
     </tbody>
   </table>
 
-  <div class="mask mb-2">
-    <div class="colleft">
-        <div class="col1">
-	        <word-categories-chart *ngIf="seo" [seo]="seo"></word-categories-chart>
-	      </div>
-	      <div class="col2">
-          <word-chart *ngIf="seo" [series]="seo"></word-chart>
-	      </div> 
-	  </div>    
-  </div>
-  
-  <div class="mask mb-2">
-        <div class="colmid">
-            <div class="colleft1">
-                <div class="col11">
-                  <sign-word *ngIf="seo" [seo]="seo"></sign-word>
-                </div>
-                <div class="col22">
-                  <unic-word *ngIf="seo" [seo]="seo"></unic-word>
-                </div>
-                <div class="col33">
-                  <stop-word *ngIf="seo" [seo]="seo"></stop-word>
-                </div>
-            </div>
-        </div>
-  </div>
-  
-  <div class="pll mb-2">
-    <water-chart *ngIf="seo" [seo]="seo"></water-chart>
-  </div>
+  <div class="desk">
+    <div class="mask mb-2">
+      <div class="colleft">
+          <div class="col1">
+            <word-categories-chart *ngIf="seo" [seo]="seo"></word-categories-chart>
+          </div>
+          <div class="col2">
+            <word-chart *ngIf="seo" [series]="seo"></word-chart>
+          </div> 
+      </div>    
+    </div>
+    
+    <div class="mask mb-2">
+          <div class="colmid">
+              <div class="colleft1">
+                  <div class="col11">
+                    <sign-word *ngIf="seo" [seo]="seo"></sign-word>
+                  </div>
+                  <div class="col22">
+                    <unic-word *ngIf="seo" [seo]="seo"></unic-word>
+                  </div>
+                  <div class="col33">
+                    <stop-word *ngIf="seo" [seo]="seo"></stop-word>
+                  </div>
+              </div>
+          </div>
+    </div>
+    
+    <div class="pll mb-2">
+      <water-chart *ngIf="seo" [seo]="seo"></water-chart>
+    </div>
+</div>
 
 <div *ngIf="seo.semanticCore.length > 0">
 <h4 class="d-flex pt-3 pb-2 justify-content-center">Семантичне ядро</h4>
