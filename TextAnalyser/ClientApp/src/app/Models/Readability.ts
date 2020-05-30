@@ -6,4 +6,5 @@ export interface Readability {
     colemanLiau:ReadabilityBase
     smog: ReadabilityBase
     ari: ReadabilityBase
+    elapsedTime: number
 }

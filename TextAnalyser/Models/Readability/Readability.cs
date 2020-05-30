@@ -12,6 +12,7 @@ namespace TextAnalyser.Models
         public ReadabilityBase ColemanLiau { get; set; }
         public ReadabilityBase SMOG { get; set; }
         public ReadabilityBase ARI { get; set; }
-
+        public long ElapsedTime { get; set; }
+        
     }
 }
