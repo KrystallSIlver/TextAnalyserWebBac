@@ -6,8 +6,8 @@
         <th scope="col">Слово</th>
         <th scope="col" class="alcn">Кількість повторів</th>
         <th scope="col" class="alcn">Значення за законом Ципфа</th>
-        <th scope="col" class="alcn">Відповідність</th>
-        <th scope="col" class="alcn">Рекомендація</th>
+        <th scope="col" class="alcn desk">Відповідність</th>
+        <th scope="col" class="alcn desk">Рекомендація</th>
       </tr>
     </thead>
     <tbody>
@@ -16,8 +16,8 @@
         <td>{{w.phrase}}</td>
         <td class="alcn">{{w.count}}</td>
         <td class="alcn">{{w.idealCount}}</td>
-        <td class="alcn">{{w.frequency}}%</td>
-        <td class="alcn"><span *ngIf="w.recomendation > 0">+</span>{{w.recomendation}}</td>
+        <td class="alcn desk">{{w.frequency}}%</td>
+        <td class="alcn desk"><span *ngIf="w.recomendation > 0">+</span>{{w.recomendation}}</td>
       </tr>
     </tbody>
   </table>

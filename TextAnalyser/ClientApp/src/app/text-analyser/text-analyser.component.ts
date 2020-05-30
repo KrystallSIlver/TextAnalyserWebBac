@@ -71,6 +71,7 @@ export class TextAnalyserComponent implements OnInit {
     this.disableAllTabs();
     this.showLangError = true;
     this.isOrthography = true;
+    this.spinner.hide();
   }
 
   restoreTabs() {

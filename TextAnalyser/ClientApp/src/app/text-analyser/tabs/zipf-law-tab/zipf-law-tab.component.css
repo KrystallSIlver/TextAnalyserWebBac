@@ -5,3 +5,9 @@ thead {
 .alcn {
     text-align: center;
 }
+
+@media (max-width: 768px) {
+    .desk {
+      display: none;
+    }
+  }

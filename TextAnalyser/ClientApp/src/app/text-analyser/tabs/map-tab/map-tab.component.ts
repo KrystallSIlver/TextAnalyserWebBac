@@ -15,7 +15,7 @@ export class MapTabComponent  {
     var text = this.text
     this.map.forEach(e => {
       e.words.forEach(w => {
-        text = text.replace(new RegExp('( )('+w+')( )','g'), '$1<span class="'+this.getCSSClass(this.map.indexOf(e))+'">$2</span>$3')
+        text = text.replace(new RegExp('( )('+w+')([ ,!.():;?"\'-/])','g'), '$1<span class="'+this.getCSSClass(this.map.indexOf(e))+'">$2</span>$3')
       });
     });
     return text

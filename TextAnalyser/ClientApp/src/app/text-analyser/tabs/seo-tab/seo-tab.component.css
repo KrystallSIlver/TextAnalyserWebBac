@@ -74,4 +74,9 @@ td {
      padding-right: 30%;
  }
  
+ @media (max-width: 768px) {
+   .desk {
+     display: none;
+   }
+ }
  
