@@ -37,7 +37,7 @@ namespace TextAnalyser.Models
             if (!optionsBuilder.IsConfigured)
             {
                 //optionsBuilder.UseSqlite("Data Source=C:/Users/Myroslav/Desktop/chekerDb/mph_ua.db;");
-                optionsBuilder.UseSqlite("Data Source=C:/Users/Myroslav/Desktop/mph_ua.db;");
+                optionsBuilder.UseSqlite("Data Source=D:/mph_ua.db;");
             }
         }
 

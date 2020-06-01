@@ -1,5 +1,4 @@
 <div class="pt-3">
-  <div *ngIf="errorPercentage >= 15">У вашому тексті велика кількість помилок. Рекомендуємо звернутись до розділу "Говоримо правильно"</div>
 <table class="table">
     <thead class="lighten-2">
       <tr>
@@ -14,4 +13,14 @@
       </tr>
     </tbody>
   </table>
+
+  <div *ngIf="errorPercentage >= 15" class="mt-4 pb-3">
+    <div class="d-flex justify-content-center mb-0">
+      <p class="mb-0">У Вашому тексті багато орфографічних помилок.</p>
+      </div>
+      <hr style="width:50%; background-color: orange;">
+      <div class="d-flex justify-content-center mb-0">
+      <p class="mb-0">Рекомендуємо звернутись до розділу <i>"Говоримо правильно"</i></p>
+      </div>
+  </div>
 </div>

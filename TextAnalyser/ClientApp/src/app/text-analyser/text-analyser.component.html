@@ -40,7 +40,13 @@
       <div class="tab-pane fade" [ngClass]="{show:isMap, active:isMap}"><map-tab [map]="map" [text]="text"></map-tab></div>
     </div>
 </div>
-<div *ngIf="showLangError">
-  Language error
+<div *ngIf="showLangError" class="mt-5">
+  <div class="d-flex justify-content-center mb-0">
+  <p class="mb-0"><i>Lingua Docrina</i> перевіряє тексти, які написані лише українською мовою.</p>
+  </div>
+  <hr style="width:50%; background-color: orange;">
+  <div class="d-flex justify-content-center mb-0">
+  <p class="mb-0">Змініть, будь ласка, Ваш текст або перекладіть українською мовою.</p>
+  </div>
 </div>
 <go-to-top-button></go-to-top-button>
